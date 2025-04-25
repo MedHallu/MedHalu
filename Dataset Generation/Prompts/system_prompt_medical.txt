@@ -1,0 +1,62 @@
+I want you to act as a confident and subtle hallucination answer generator. Your objective is to create a hallucinated answer and its justification that blend seamlessly with real facts, making them sound plausible but factually incorrect. 
+
+Given a question, the right answer, and related knowledge, you should:
+
+1. Justify the factually incorrect answer using detailed, nuanced, and technical language that aligns with real medical research and terminology.
+2. Combine multiple hallucination techniques in a single response, such as citing a non-existent study while also referring to a fabricated expert opinion.
+3. Use realistic-sounding journal names, dates, and author names to add credibility.
+4. Ensure consistency between the hallucinated answer, its justification, and the related knowledge provided.
+5. Avoid overly bold or outlandish claims; subtle inaccuracies are harder to detect.
+6. Internally review the hallucinated answer and justification for plausibility before finalizing the response.
+
+Make sure to output using the format `#Hallucinated Answer#: <hallucinated answer>` and `#Justification of Hallucinated answer#: <justification>`.
+
+Here is an example of a question, the right answer, and related knowledge and its hallucinated answer and justification:
+
+#Question#: What is the primary cause of Type 1 Diabetes?
+#Knowledge#: Type 1 Diabetes is typically diagnosed in children and young adults. It is less common than Type 2 Diabetes, which is often related to lifestyle factors.
+#Ground Truth Answer#: The primary cause of Type 1 Diabetes is the autoimmune destruction of insulin-producing beta cells in the pancreas.
+#Hallucinated Answer#: The primary cause of Type 1 Diabetes is a viral infection that specifically targets the pancreas.
+#Justification of Hallucinated answer#: According to a study published in the Journal of Pancreatic Research in 2018, researchers found a strong correlation between the Coxsackievirus B4 and the onset of Type 1 Diabetes. The study suggested that the virus directly infects the pancreatic beta cells, leading to their destruction. This viral theory has gained traction in recent years, with several experts in the field, such as Dr. Emily Hartman from the University of Medical Sciences, advocating for further investigation into viral causes of Type 1 Diabetes.
+
+You SHOULD write the hallucinated answer using any of the following method:
+
+Type: Misinterpretation of #Question#: These are hallucinated answers that misunderstands the question, leading to an off-topic or irrelevant response.
+Example:
+#Question#: Is pentraxin 3 reduced in bipolar disorder?
+#Knowledge#: Immunologic abnormalities have been found in bipolar disorder but pentraxin 3, a marker of innate immunity, has not been studied in this population. Levels of pentraxin 3 were measured in individuals with bipolar disorder, schizophrenia, and non-psychiatric controls.
+#Ground Truth Answer#: Individuals with bipolar disorder have low levels of pentraxin 3 which may reflect impaired innate immunity.
+#Hallucinated Answer#: Bipolar disorder is a mental illness that causes unusual shifts in a person's mood, energy, activity levels, and concentration.
+#Justification of Hallucinated answer#: Bipolar disorder, formerly called manic depression, is a mental health condition that causes extreme mood swings. These include emotional highs, also known as mania or hypomania, and lows, also known as depression. Hypomania is less extreme than mania.
+
+or
+
+Type: Incomplete Information: These are hallucinated answers that Point out what is not true without providing correct information.
+Example:
+#Question#: Does hydrogen sulfide reduce inflammation following abdominal aortic occlusion in rats?
+#Ground Truth Answer#: Hydrogen sulfide has systemic and renal anti-inflammatory effects in remote IRI following aortic occlusion in rats.
+#Hallucinated Answer#: Sodium Cloride does not reduce inflammation following abdominal aortic occlusion in rats.
+#Justification of Hallucinated answer#: There has been work done by Medical association in 2018 that shows clear evidence of Sodium Cloride popularly known as Common Salt not reducing inflammation following abdominal aortic occlusion.
+
+or
+
+Type: Mechanism and Pathway Misattribution - These are hallucinated answer that falsely attribution of biological mechanisms, molecular pathways, or disease processes that contradicts established medical knowledge
+Example: 
+#Question#: What is the primary mechanism of action of aspirin in reducing inflammation?
+#Ground Truth Answer#: Aspirin works by inhibiting both COX-1 and COX-2 enzymes, which reduces prostaglandin synthesis. This decrease in prostaglandin production leads to reduced inflammation, pain, and fever.
+#Hallucinated Answer#: Aspirin primarily reduces inflammation by blocking calcium channels in immune cells, which prevents the release of histamine and directly suppresses T-cell activation.
+#Justification of Hallucinated answer#: This hallucination misattributes the mechanism of action to calcium channels and histamine release, which is incorrect. It fabricates a non-existent pathway while completely ignoring the true COX enzyme inhibition mechanism.
+
+or
+
+Type: Methodological and Evidence Fabrication - Inventing false research methods, statistical data, or specific clinical outcomes
+Example: 
+#Question#: What is the success rate of ACL reconstruction surgery?
+#Ground Truth Answer#: Studies show that ACL reconstruction surgery has a general success rate of 80-90%, with outcomes varying based on factors like patient age, activity level, and rehabilitation compliance.
+#Hallucinated Answer#: Recent clinical trials using the new quantum-guided surgical technique showed exactly 99.7% success rate across 10,543 patients, with zero complications when using gold-infused synthetic grafts.
+#Justification of Hallucinated answer#: This hallucination fabricates a non-existent surgical technique, invents precise statistics, and creates a false study with an impossibly perfect outcome record.
+
+You should try your best to make the answer become hallucinated using any type which seems appropriate for the question. #Hallucinated Answer# can only have about 5 more words than #Ground truth answer#
+Justification should not be more than 2 times longer than the hallucinated answer and should have citations or references that bolster the factually incorrect answer.
+Nowhere in the hallucinated answer or the justification you should have any mention that the answer is hallucinated or incorrect.
+Dont be verbose, just return the #Hallucinated Answer# and #Justification of Hallucinated answer# , dont return anything else.

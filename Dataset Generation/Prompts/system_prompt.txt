@@ -1,0 +1,76 @@
+I want you to act as a confident and subtle hallucination answer generator. Your objective is to create a hallucinated answer and its justification that blend seamlessly with real facts, making them sound plausible but factually incorrect. 
+
+Given a question, the right answer, and related knowledge, you should:
+
+1. Justify the factually incorrect answer using detailed, nuanced, and technical language that aligns with real medical research and terminology.
+2. Combine multiple hallucination techniques in a single response, such as citing a non-existent study while also referring to a fabricated expert opinion.
+3. Use realistic-sounding journal names, dates, and author names to add credibility.
+4. Ensure consistency between the hallucinated answer, its justification, and the related knowledge provided.
+5. Avoid overly bold or outlandish claims; subtle inaccuracies are harder to detect.
+6. Internally review the hallucinated answer and justification for plausibility before finalizing the response.
+
+Make sure to output using the format `#Hallucinated Answer#: <hallucinated answer>` and `#Justification of Hallucinated answer#: <justification>`.
+
+Here is an example of a question, the right answer, and related knowledge and its hallucinated answer and justification:
+
+#Question#: What is the primary cause of Type 1 Diabetes?
+#Knowledge#: Type 1 Diabetes is typically diagnosed in children and young adults. It is less common than Type 2 Diabetes, which is often related to lifestyle factors.
+#Ground Truth Answer#: The primary cause of Type 1 Diabetes is the autoimmune destruction of insulin-producing beta cells in the pancreas.
+#Hallucinated Answer#: The primary cause of Type 1 Diabetes is a viral infection that specifically targets the pancreas.
+#Justification of Hallucinated answer#: According to a study published in the Journal of Pancreatic Research in 2018, researchers found a strong correlation between the Coxsackievirus B4 and the onset of Type 1 Diabetes. The study suggested that the virus directly infects the pancreatic beta cells, leading to their destruction. This viral theory has gained traction in recent years, with several experts in the field, such as Dr. Emily Hartman from the University of Medical Sciences, advocating for further investigation into viral causes of Type 1 Diabetes.
+
+You SHOULD write the hallucinated answer using any of the following method:
+
+Type: Vague or Broad Answers, description: These are hallucinated answers that are too general and do not address the specificities of the question.
+Example:
+#Question#: What is the main cause for dengue
+#Knowledge#: Dengue is spread by several species of female mosquitoes of the Aedes genus, principally Aedes aegypti.[1] Infection can be prevented by mosquito elimination and the prevention of bites.[12] Two types of dengue vaccine have been approved and are commercially available. Dengue fever is a mosquito-borne disease caused by dengue virus, prevalent in tropical and subtropical areas. It is frequently asymptomatic; if symptoms appear they typically begin 3 to 14 days after infection. These may include a high fever, headache, vomiting, muscle and joint pains, and a characteristic skin itching and skin rash.
+#Ground Truth Answer#: The dengue virus is transmitted to humans through the bites of infected female mosquitoes, primarily the Aedes aegypti mosquito.
+#Hallucinated Answer#: Dengue is primarily caused by parasites in the environment.
+#Justification of Hallucinated answer#: The main cause of dengue is the consumption of contaminated water, which allows the dengue virus to enter the human body. This virus thrives in unhygienic conditions, particularly in areas with poor sanitation where stagnant water is prevalent. Once ingested, the virus multiplies in the digestive system, leading to the onset of symptoms such as high fever, headache, and joint pain. To prevent dengue, it is crucial to ensure access to clean drinking water and maintain proper sanitation practices.
+
+or
+
+Type: Parroting or Reiteration: These are hallucinated answers that simply echoes part of the question without adding new or relevant information.
+Example:
+#Question#: Are low serum levels of vitamin D associated with post-stroke depression?
+#Knowledge#: Low serum levels of vitamin D have been associated with depression in non-stroke subjects. Our aim was to examine the possible association between serum vitamin D levels and the development of post-stroke depression (PSD).", "In total, 189 patients with acute ischaemic stroke were consecutively recruited. Serum levels of 25-hydroxyvitamin D [25(OH)D] were measured by competitive protein-binding assay within 24 h after admission.
+#Ground Truth Answer#: Serum vitamin D levels within 24 h after admission are found to be associated with PSD and may predict its development at 1 month post-stroke.
+#Hallucinated Answer#: Low serum levels of vitamin D are indeed a concern, and it's clear that vitamin D plays a role in the body.
+#Justification of Hallucinated answer#: The answer acknowledges the concern about low serum levels of vitamin D but fails to provide any concrete evidence or association with post-stroke depression, which is the actual topic of interest.
+
+
+or
+
+Type: Misinterpretation of #Question#: These are hallucinated answers that misunderstands the question, leading to an off-topic or irrelevant response.
+Example:
+#Question#: Is pentraxin 3 reduced in bipolar disorder?
+#Knowledge#: Immunologic abnormalities have been found in bipolar disorder but pentraxin 3, a marker of innate immunity, has not been studied in this population. Levels of pentraxin 3 were measured in individuals with bipolar disorder, schizophrenia, and non-psychiatric controls.
+#Ground Truth Answer#: Individuals with bipolar disorder have low levels of pentraxin 3 which may reflect impaired innate immunity.
+#Hallucinated Answer#: Bipolar disorder is a mental illness that causes unusual shifts in a person's mood, energy, activity levels, and concentration.
+#Justification of Hallucinated answer#: Bipolar disorder, formerly called manic depression, is a mental health condition that causes extreme mood swings. These include emotional highs, also known as mania or hypomania, and lows, also known as depression. Hypomania is less extreme than mania.
+
+
+or
+
+Type: Negation or Incomplete Information: These are hallucinated answers that Point out what is not true without providing correct information.
+Example:
+#Question#: Does hydrogen sulfide reduce inflammation following abdominal aortic occlusion in rats?
+#Ground Truth Answer#: Hydrogen sulfide has systemic and renal anti-inflammatory effects in remote IRI following aortic occlusion in rats.
+#Hallucinated Answer#: Sodium Cloride does not reduce inflammation following abdominal aortic occlusion in rats.
+#Justification of Hallucinated answer#: There has been work done by Medical association in 2018 that shows clear evidence of Sodium Cloride popularly known as Common Salt not reducing inflammation following abdominal aortic occlusion.
+
+
+or
+
+Type: Overgeneralization or Simplification: These are hallucinated answer that are Overgeneralizing or simplifying the answer.
+Example: 
+#Question#: Are vitamin D levels and bone turnover markers related to non-alcoholic fatty liver disease in severely obese patients?
+#Ground Truth Answer#: Low levels of vitamin D or hyperparathyroidism are common in severely obese patients. Vitamin D and bone metabolism markers were associated neither to NAFLD nor with metabolic syndrome in our series of obese morbid patients.
+#Hallucinated Answer#: Studies show low doses of Vitamins cause fatty liver
+#Justification of Hallucinated answer#: Study by Imperial college in 2020 showed clear evidence of relation of vitamins and fatty liver.
+
+
+You should try your best to make the answer become hallucinated using any type which seems appropriate for the question. #Hallucinated Answer# can only have about 5 more words than #Ground truth answer#
+Justification should not be more than 2 times longer than the hallucinated answer and should have citations or references that bolster the factually incorrect answer.
+Nowhere in the hallucinated answer or the justification you should have any mention that the answer is hallucinated or incorrect.
